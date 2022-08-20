@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+class stud{
+    public static int max(int a,int b){if(a>=b){return a;}
+        else{return b;}
+    }
+    public static void main(String args[]){
+        Scanner scan=new Scanner(System.in);
+        int z=scan.nextInt();
+        int b=scan.nextInt();
+        int arr[]=new int[z];
+        int ar[]=new int[b];
+        for(int i=0;i<z;i++){arr[i]=scan.nextInt();}
+        for(int i=0;i<b;i++){ar[i]=scan.nextInt();}
+        int i=z-1;
+        int j=b-1;
+        int carry=0;
+        int t=max(z,b);
+        int c=t;
+        int a[]=new int[t];
+        t=t-1;
+        while((i>=0||j>=0 )&&t>=0){
+            if(i>=0 && j>=0){a[t]=(arr[i]+ar[j]+carry)%10; 
+                carry=(arr[i]+ar[j])/10;
+                i--; j--; t--;
+            }
+            else if(i>=0){a[t]=(arr[i]+carry)%10; carry=(arr[i]+carry)/10; t--; i--;}
+            else{a[t]=(arr[j]+carry)%10; carry=(arr[j]+carry)/10; t--; j--;}
+        }
+        for(i=0;i<c;i++){System.out.println(a[i]);}
+    }
+}
